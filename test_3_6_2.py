@@ -37,3 +37,11 @@ def test_guest_should_see_login_link(dr, code, lang):
     print("Проверяемый язык %s" % lang)
     dr.get(link)
     dr.find_element_by_css_selector("#login_link")
+    
+languages = ["ru", "de", "ua", "en-gb",]
+labels = ["russian", "german", "ukrainian", "english", ]
+
+@pytest.mark.parametrize("code", languages, ids=labels)
+def test_guest_should_see_login_link(code):
+    link = "http://selenium1py.pythonanywhere.com/{}/".format(code)
+    
